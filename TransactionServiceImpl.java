@@ -11,6 +11,6 @@ public class TransactionServiceImpl implements TransactionService {
 	private TransactioneDao transactiondao=new TransactionDaoImpl();
 	
 	@Override
-	public ArrayList<Share> getAllTransactionRecords() throws ClassNotFoundException, SQLException {
-		return shareDao.getAllTransactionRecords();
+	public ArrayList<Transaction> getAllTransactionRecords() throws ClassNotFoundException, SQLException {
+		return transactiondao.getAllTransactionRecords();
 	}

@@ -19,7 +19,7 @@ public class TransactionServiceImpl implements TransactionService
 	}
 
 	@Override
-	public Transaction searchTransactionRecordById(int transactionId) throws ClassNotFoundException, SQLException {
+	public Transaction searchTransactionRecordById(Long transactionId) throws ClassNotFoundException, SQLException {
 		Transaction t=transactionDao.searchTransactionById(transactionId);
 		if(t!=null)
 			t=convertUpperCase(t);

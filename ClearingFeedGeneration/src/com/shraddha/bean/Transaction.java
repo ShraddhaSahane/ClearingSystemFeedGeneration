@@ -2,20 +2,20 @@ package com.shraddha.bean;
 
 public class Transaction 
 {
-	private int transactionId;
+	private  long transactionId;
 	private int valDate;
 	private String payerName;
-	private int payerAccount;
+	private long payerAccount;
 	private String payeeName;
-	private int payeeAccount;
+	private long payeeAccount;
 	private float amount;
      
 	public Transaction() {
 		
 	}
 	
-	public Transaction(int transactionId, int valDate, String payerName, int payerAccount, String payeeName,
-			int payeeAccount, float amount) {
+	public Transaction(long transactionId, int valDate, String payerName, long payerAccount, String payeeName,
+			long payeeAccount, float amount) {
 		super();
 		this.transactionId = transactionId;
 		this.valDate = valDate;
@@ -26,10 +26,10 @@ public class Transaction
 		this.amount = amount;
 	}
 
-	public int getTransactionId() {
+	public long getTransactionId() {
 		return transactionId;
 	}
-	public void setTransactionId(int transactionId) {
+	public void setTransactionId(long transactionId) {
 		this.transactionId = transactionId;
 	}
 	public int getValDate() {
@@ -44,10 +44,10 @@ public class Transaction
 	public void setPayerName(String payerName) {
 		this.payerName = payerName;
 	}
-	public int getPayerAccount() {
+	public long getPayerAccount() {
 		return payerAccount;
 	}
-	public void setPayerAccount(int payerAccount) {
+	public void setPayerAccount(long payerAccount) {
 		this.payerAccount = payerAccount;
 	}
 	public String getPayeeName() {
@@ -56,10 +56,10 @@ public class Transaction
 	public void setPayeeName(String payeeName) {
 		this.payeeName = payeeName;
 	}
-	public int getPayeeAccount() {
+	public long getPayeeAccount() {
 		return payeeAccount;
 	}
-	public void setPayeeAccount(int payeeAccount) {
+	public void setPayeeAccount(long payeeAccount) {
 		this.payeeAccount = payeeAccount;
 	}
 	public float getAmount() {

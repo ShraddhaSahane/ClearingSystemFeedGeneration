@@ -6,7 +6,7 @@ import com.shraddha.bean.Transaction;
 public interface TransactionService 
 {
 	ArrayList<Transaction> getAllTransactions() throws ClassNotFoundException ,SQLException;
-	Transaction searchTransactionRecordById(int transactionId)throws ClassNotFoundException ,SQLException;
+	Transaction searchTransactionRecordById(Long transactionId)throws ClassNotFoundException ,SQLException;
 	Transaction convertUpperCase(Transaction t);
 	boolean addTransaction(Transaction t) throws ClassNotFoundException, SQLException;
 }

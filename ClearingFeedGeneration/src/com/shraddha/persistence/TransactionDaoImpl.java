@@ -1,4 +1,6 @@
 package com.shraddha.persistence;
+import java.util.regex.*;
+import java.lang.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -90,4 +92,111 @@ public class TransactionDaoImpl implements TransactionDao
 		return t;
 	}
 
-}
+	public void validateTransaction() throws SQLException,ClassNotFoundException
+	{
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		Connection connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/clearingsystem", "root", "2001");
+		try 
+		{
+			//get result set containing data from table
+			PreparedStatement preparedStatement=connection.prepareStatement("select * from transaction");
+			ResultSet resultSet=preparedStatement.executeQuery();
+			
+		//for each row in the table
+			while(resultSet.next()) {
+				//get data using column name
+				String data=resultSet.getString("transactionId");
+				String data1;
+				//validate this string
+				boolean valid=ValidateAlphaNumeric(data);
+				/*if(valid) {
+				    data=resultSet.getString("valDate");
+					valid=ValidateDate(data);
+				}*/
+				if(valid) {
+					 data=resultSet.getString("payerName");
+						valid=ValidateAlphaNumeric(data);
+				}
+				if(valid) {
+					 data=resultSet.getString("payerAccount");
+						valid=ValidateAlphaNumeric(data);
+				}
+				if(valid) {
+					 data=resultSet.getString("payeeName");
+						valid=ValidateAlphaNumeric(data);
+				}
+				if(valid) {
+					 data=resultSet.getString("payeeAccount");
+						valid=ValidateAlphaNumeric(data);
+				}
+				if(valid) {
+					 data1=resultSet.getString("amount");
+					valid=ValidateAmount(data1.toString());
+				}
+				
+				if(valid) {
+					System.out.println("Feed generated");
+				}
+				else {
+					System.out.println("Feed not generated");
+				}
+				
+			
+				
+			}
+		}
+		 catch (SQLException e) {
+			 
+			  System.out.println("Could not retrieve data from the database " + e.getMessage());
+			    }
+	}
+	//to validate alpha numeric string
+	//	 public static  boolean ValidateAlphaNumeric(long text)
+	  //   {
+
+	         //return (Regex.IsMatch(text, "^[a-zA-Z0-9]*$"));
+	    // }
+		 public static  boolean ValidateAlphaNumeric(String s)
+	     {
+			 return s != null && s.matches("^[a-zA-Z0-9]*$");
+
+	         //return (Regex.IsMatch(text, "^[a-zA-Z0-9]*$"));
+	     }
+		 
+		 //to validate date
+		/* public static boolean ValidateDate(DateTime date)
+	     {
+	         return DateTime.Now.ToShortDateString() == date.ToShortDateString();
+	     }*/
+		 
+		 public static boolean ValidateAmount(String amount)
+	     {
+			 boolean num =true;
+	         String[] amountSplit=amount.split(".");
+	         if(amountSplit[0].length() > 10)
+	         {
+	             num = false;
+	            
+	         }
+	         if(num)
+	         {
+	             if (amountSplit[1].length() > 2)
+	             {
+	                 num = false;
+	             }
+	         }
+	         if (num)
+	         {
+	        	 int i=Integer.parseInt(amount);
+	             if (i<0)
+	             {
+	                 num = false;
+	             }
+	         }
+	         return num;
+
+	     }
+
+
+	}
+

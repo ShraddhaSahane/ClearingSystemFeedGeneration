@@ -25,7 +25,15 @@ public class TransactionServiceImpl implements TransactionService
 			t=convertUpperCase(t);
 		return t;
 	}
-
+	public 	void  validtransaction() throws ClassNotFoundException ,SQLException
+	{
+		try {
+			transactionDao.validateTransaction();
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	//Bussiness Logic
 	@Override
 	public Transaction convertUpperCase(Transaction t) {

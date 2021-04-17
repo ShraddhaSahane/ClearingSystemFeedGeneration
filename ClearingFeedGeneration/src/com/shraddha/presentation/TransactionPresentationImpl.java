@@ -18,7 +18,8 @@ public class TransactionPresentationImpl implements TransactionPresentation {
 		System.out.println("1. List All Transaction");
 		System.out.println("2. Adding New Transaction");
 		System.out.println("3. Search Transaction By ID");
-		System.out.println("4. Exit");
+		System.out.println("4. Validations for transaction");
+		System.out.println("0. Exit");
 	}
 
 	@Override
@@ -83,6 +84,14 @@ public class TransactionPresentationImpl implements TransactionPresentation {
 			}
 			break;
 		case 4:
+			try {
+				transactionService.validtransaction();
+			} catch (ClassNotFoundException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			break;
+		case 0:
 			System.out.println("Thanks for Using our system, Have a Nice Day!");
 			System.exit(0);
 		default:

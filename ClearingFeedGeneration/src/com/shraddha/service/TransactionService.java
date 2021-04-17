@@ -9,4 +9,5 @@ public interface TransactionService
 	Transaction searchTransactionRecordById(Long transactionId)throws ClassNotFoundException ,SQLException;
 	Transaction convertUpperCase(Transaction t);
 	boolean addTransaction(Transaction t) throws ClassNotFoundException, SQLException;
+	void  validtransaction() throws ClassNotFoundException ,SQLException;
 }
